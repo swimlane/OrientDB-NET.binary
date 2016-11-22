@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Security;
 using System.Net.Sockets;
 using Orient.Client.Protocol.Operations;
 using Orient.Client.Protocol.Serializers;
@@ -49,7 +50,8 @@ namespace Orient.Client.Protocol
         }
         internal ODocument Document { get; set; }
 
-        internal Connection(string hostname, int port, string databaseName, ODatabaseType databaseType, string userName, string userPassword, string alias, bool isReusable)
+        internal Connection(string hostname, int port, string databaseName, ODatabaseType databaseType, 
+            string userName, string userPassword, string alias, bool isReusable, bool ssl=false)
         {
             Hostname = hostname;
             Port = port;
@@ -63,11 +65,12 @@ namespace Orient.Client.Protocol
             DatabaseType = databaseType;
             UserName = userName;
             UserPassword = userPassword;
+            Ssl = ssl;
 
             InitializeDatabaseConnection(databaseName, databaseType, userName, userPassword);
         }
 
-        internal Connection(string hostname, int port, string userName, string userPassword)
+        internal Connection(string hostname, int port, string userName, string userPassword, bool ssl=false)
         {
             Hostname = hostname;
             Port = port;
@@ -75,9 +78,12 @@ namespace Orient.Client.Protocol
             IsReusable = false;
             ProtocolVersion = 0;
             SessionId = -1;
+            Ssl = ssl;
 
             InitializeServerConnection(userName, userPassword);
         }
+
+        public bool Ssl { get; set; }
 
         internal ODocument ExecuteOperation(IOperation operation)
         {
@@ -235,15 +241,27 @@ namespace Orient.Client.Protocol
                 throw new OException(OExceptionType.Connection, ex.Message, ex.InnerException);
             }
 
-            _networkStream = new BufferedStream(_socket.GetStream());
+            if (Ssl)
+            {
+                var sslStream = new SslStream(_socket.GetStream());
+                sslStream.AuthenticateAsClient(Hostname);
+                _networkStream = new BufferedStream(sslStream);
+            }
+            else
+            {
+               _networkStream = new BufferedStream(_socket.GetStream());
+            }
+
             _networkStream.Read(_readBuffer, 0, 2);
 
             OClient.ProtocolVersion = ProtocolVersion = BinarySerializer.ToShort(_readBuffer.Take(2).ToArray());
 
             // execute connect operation
-            Connect operation = new Connect();
-            operation.UserName = userName;
-            operation.UserPassword = userPassword;
+            var operation = new Connect
+            {
+                UserName = userName,
+                UserPassword = userPassword
+            };
 
             Document = ExecuteOperation(operation);
             SessionId = Document.GetField<int>("SessionId");

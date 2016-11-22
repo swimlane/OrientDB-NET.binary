@@ -1,0 +1,19 @@
+version: '2'
+services:
+  orient:
+    build: .
+    ports:
+      - 2434:2434
+      - 2480:2480
+    restart: unless-stopped
+    volumes:
+      - "db:/orientdb/databases"
+      - "backup:/orientdb/backup"
+    environment:
+      - ORIENTDB_ROOT_PASSWORD=UR4swimlane!
+
+volumes:
+  db:
+    external: false
+  backup:
+    external: false

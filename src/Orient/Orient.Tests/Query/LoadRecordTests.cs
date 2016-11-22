@@ -16,7 +16,7 @@ namespace Orient.Tests.Query
         {
             using (var testContext = new TestDatabaseContext())
             {
-                using (var database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (var database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database
@@ -45,7 +45,7 @@ namespace Orient.Tests.Query
 
             using (var testContext = new TestDatabaseContext())
             {
-                using (var database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (var database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     var config = database.Load.ORID(new ORID(0, 0)).Run();
                     Assert.IsInstanceOfType(config, typeof(ODocument));
@@ -58,7 +58,7 @@ namespace Orient.Tests.Query
         {
             using (var testContext = new TestDatabaseContext())
             {
-                using (var database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (var database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database
@@ -87,7 +87,7 @@ namespace Orient.Tests.Query
         {
             using (var testContext = new TestDatabaseContext())
             {
-                using (var database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (var database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database

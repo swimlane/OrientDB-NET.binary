@@ -11,21 +11,24 @@ namespace Orient.Tests
         [TestMethod]
         public void TestConfigGet()
         {
-            OServer server = TestConnection.GetServer();
+            var connection = new TestConnection();
+            OServer server = connection.Server;
             string value = server.ConfigGet("db.document.serializer");
             Assert.AreEqual("ORecordSerializerBinary", value);
         }
         [TestMethod]
         public void TestConfigList()
         {
-            OServer server = TestConnection.GetServer();
+            var connection = new TestConnection();
+            OServer server = connection.Server;
             Dictionary<string, string> config = server.ConfigList();
             Assert.IsTrue(config.Count > 0);
         }
         [TestMethod]
         public void TestConfigSet()
         {
-            OServer server = TestConnection.GetServer();
+            var connection = new TestConnection();
+            OServer server = connection.Server;
             // Only Set existing keys
             // Don't create new one
             bool IsCreated = server.ConfigSet("network.retry", "6");

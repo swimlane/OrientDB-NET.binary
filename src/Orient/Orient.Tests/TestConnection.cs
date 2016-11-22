@@ -2,68 +2,63 @@
 
 namespace Orient.Tests
 {
-    public static class TestConnection
+    public class TestConnection
     {
-        private static string _hostname = "127.0.0.1";
-        private static int _port = 2424;
-        private static string _username = "admin";
-        private static string _password = "admin";
+        private const string HOSTNAME = "127.0.0.1";
+        private const int PORT = 2434;
+        private const string USERNAME = "admin";
+        private const string PASSWORD = "admin";
 
-        private static string _rootUserName = "root";
-        private static string _rootUserParssword = "root";
-        private static OServer _server;
+        private const string ROOT_USER_NAME = "root";
+        private const string ROOT_USER_PARSSWORD = "UR4swimalne!";
+        private readonly OServer _server;
+        private bool _ssl;
 
-        public static int GlobalTestDatabasePoolSize { get { return 3; } }
-        public static string GlobalTestDatabaseName { get; private set; }
-        public static ODatabaseType GlobalTestDatabaseType { get; private set; }
-        public static string GlobalTestDatabaseAlias { get; private set; }
+        public static int GlobalTestDatabasePoolSize => 3;
+        public const string GLOBAL_TEST_DATABASE_NAME = "globalTestDatabaseForNetDriver001";
+        public ODatabaseType GlobalTestDatabaseType { get; private set; }
+        public const string GLOBAL_TEST_DATABASE_ALIAS = "globalTestDatabaseForNetDriver001Alias";
 
-        static TestConnection()
+        public TestConnection(bool ssl=false)
         {
-            _server = new OServer(_hostname, _port, _rootUserName, _rootUserParssword);
-
-            GlobalTestDatabaseName = "globalTestDatabaseForNetDriver001";
+            _ssl = ssl;
+            _server = new OServer(HOSTNAME, PORT, ROOT_USER_NAME, ROOT_USER_PARSSWORD, ssl);
             GlobalTestDatabaseType = ODatabaseType.Graph;
-            GlobalTestDatabaseAlias = "globalTestDatabaseForNetDriver001Alias";
         }
 
-        public static void CreateTestDatabase()
+        public void CreateTestDatabase()
         {
             DropTestDatabase();
-
-            _server.CreateDatabase(GlobalTestDatabaseName, GlobalTestDatabaseType, OStorageType.Memory);
+            _server.CreateDatabase(GLOBAL_TEST_DATABASE_NAME, GlobalTestDatabaseType, OStorageType.Memory);
         }
 
-        public static void DropTestDatabase()
+        public void DropTestDatabase()
         {
-            if (_server.DatabaseExist(GlobalTestDatabaseName, OStorageType.Memory))
+            if (_server.DatabaseExist(GLOBAL_TEST_DATABASE_NAME, OStorageType.Memory))
             {
-                _server.DropDatabase(GlobalTestDatabaseName, OStorageType.Memory);
+                _server.DropDatabase(GLOBAL_TEST_DATABASE_NAME, OStorageType.Memory);
             }
         }
 
-        public static void CreateTestPool()
+        public void CreateTestPool()
         {
             OClient.CreateDatabasePool(
-                _hostname,
-                _port,
-                GlobalTestDatabaseName,
+                HOSTNAME,
+                PORT,
+                GLOBAL_TEST_DATABASE_NAME,
                 GlobalTestDatabaseType,
-                _username,
-                _password,
+                USERNAME,
+                PASSWORD,
                 GlobalTestDatabasePoolSize,
-                GlobalTestDatabaseAlias
+                GLOBAL_TEST_DATABASE_ALIAS
             );
         }
 
-        public static void DropTestPool()
+        public void DropTestPool()
         {
-            OClient.DropDatabasePool(GlobalTestDatabaseAlias);
+            OClient.DropDatabasePool(GLOBAL_TEST_DATABASE_ALIAS);
         }
 
-        public static OServer GetServer()
-        {
-            return _server;
-        }
+        public OServer Server => _server;
     }
 }

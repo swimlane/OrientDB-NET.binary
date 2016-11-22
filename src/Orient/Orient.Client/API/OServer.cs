@@ -7,43 +7,48 @@ namespace Orient.Client
 {
     public class OServer : IDisposable
     {
-        private Connection _connection;
+        private readonly Connection _connection;
 
-        public OServer(string hostname, int port, string userName, string userPassword)
+        public OServer(string hostname, int port, string userName, string userPassword, bool ssl=false)
         {
-            _connection = new Connection(hostname, port, userName, userPassword);
+            _connection = new Connection(hostname, port, userName, userPassword, ssl);
         }
 
         public bool CreateDatabase(string databaseName, ODatabaseType databaseType, OStorageType storageType)
         {
-            DbCreate operation = new DbCreate();
-            operation.DatabaseName = databaseName;
-            operation.DatabaseType = databaseType;
-            operation.StorageType = storageType;
+            var operation = new DbCreate
+            {
+                DatabaseName = databaseName,
+                DatabaseType = databaseType,
+                StorageType = storageType
+            };
 
-            ODocument document = _connection.ExecuteOperation(operation);
-
+            var document = _connection.ExecuteOperation(operation);
             return document.GetField<bool>("IsCreated");
         }
 
         public bool DatabaseExist(string databaseName, OStorageType storageType)
         {
-            DbExist operation = new DbExist();
-            operation.DatabaseName = databaseName;
-            operation.StorageType = storageType;
+            var operation = new DbExist
+            {
+                DatabaseName = databaseName,
+                StorageType = storageType
+            };
 
-            ODocument document = _connection.ExecuteOperation(operation);
+            var document = _connection.ExecuteOperation(operation);
 
             return document.GetField<bool>("Exists");
         }
 
         public void DropDatabase(string databaseName, OStorageType storageType)
         {
-            DbDrop operation = new DbDrop();
-            operation.DatabaseName = databaseName;
-            operation.StorageType = storageType;
+            var operation = new DbDrop
+            {
+                DatabaseName = databaseName,
+                StorageType = storageType
+            };
 
-            ODocument document = _connection.ExecuteOperation(operation);
+            var document = _connection.ExecuteOperation(operation);
         }
 
         #region Configuration

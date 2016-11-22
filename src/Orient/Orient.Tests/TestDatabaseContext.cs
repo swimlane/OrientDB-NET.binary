@@ -4,16 +4,19 @@ namespace Orient.Tests
 {
     public class TestDatabaseContext : IDisposable
     {
+        private readonly TestConnection _connection;
+
         public TestDatabaseContext()
         {
-            TestConnection.CreateTestDatabase();
-            TestConnection.CreateTestPool();
+            _connection = new TestConnection();
+            _connection.CreateTestDatabase();
+            _connection.CreateTestPool();
         }
 
         public void Dispose()
         {
-            TestConnection.DropTestPool();
-            TestConnection.DropTestDatabase();
+            _connection.DropTestPool();
+            _connection.DropTestDatabase();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database
@@ -68,7 +68,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database
@@ -118,7 +118,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database
@@ -178,7 +178,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database
@@ -240,7 +240,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database
@@ -296,7 +296,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database
@@ -353,7 +353,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database
@@ -407,7 +407,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database
@@ -458,7 +458,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database
@@ -511,7 +511,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database
@@ -567,7 +567,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database
@@ -621,7 +621,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     // prerequisites
                     database

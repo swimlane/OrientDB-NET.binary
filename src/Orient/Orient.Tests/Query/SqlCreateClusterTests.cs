@@ -12,7 +12,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     short clusterId1 = database
                         .Create.Cluster("TestCluster1", OClusterType.Physical)

@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orient.Client", "Orient.Client\Orient.Client.csproj", "{224DB9BA-3BA5-4955-B147-E540E1F270DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orient.Console", "Orient.Console\Orient.Console.csproj", "{D290BB2C-98DC-4F83-8B3C-E9B2C9C41A50}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orient.Tests", "Orient.Tests\Orient.Tests.csproj", "{487B3635-ED01-4AD1-B90A-DA1E4358B580}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Orient.Docker", "Orient.Config\Orient.Docker.pyproj", "{CFE84622-1918-4E76-9183-6937AFBA6C53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +29,8 @@ Global
 		{487B3635-ED01-4AD1-B90A-DA1E4358B580}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{487B3635-ED01-4AD1-B90A-DA1E4358B580}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{487B3635-ED01-4AD1-B90A-DA1E4358B580}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFE84622-1918-4E76-9183-6937AFBA6C53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE84622-1918-4E76-9183-6937AFBA6C53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

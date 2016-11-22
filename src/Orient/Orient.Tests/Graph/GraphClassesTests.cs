@@ -13,7 +13,7 @@ namespace Orient.Tests.Graph
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     //This commadn contains a character that will take up more than one byte
                     OVertex vertex1 = database
@@ -31,7 +31,7 @@ namespace Orient.Tests.Graph
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     OVertex vertex1 = database
                         .Create.Vertex<OVertex>()

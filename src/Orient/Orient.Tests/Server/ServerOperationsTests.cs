@@ -12,7 +12,8 @@ namespace Orient.Tests.Server
         public void ShouldCreateAndDeleteDatabase()
         {
             string databaseName = "thisIsTestDatabaseForNetDriver";
-            OServer server = TestConnection.GetServer();
+            var connection = new TestConnection();
+            OServer server = connection.Server;
 
             bool exists = server.DatabaseExist(databaseName, OStorageType.PLocal);
 
@@ -45,7 +46,8 @@ namespace Orient.Tests.Server
         [TestMethod]
         public void TestDbList()
         {
-            OServer server = TestConnection.GetServer();
+            var connection = new TestConnection();
+            OServer server = connection.Server;
             Dictionary<string, string> databases = server.Databases();
             Assert.IsTrue(databases.Count > 0);
         }

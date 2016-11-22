@@ -12,7 +12,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     short classId1 = database
                         .Create.Class("TestClass1")
@@ -34,7 +34,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     short classId1 = database
                         .Create.Class("TestClass1")
@@ -60,7 +60,7 @@ namespace Orient.Tests.Query
         {
             using (TestDatabaseContext testContext = new TestDatabaseContext())
             {
-                using (ODatabase database = new ODatabase(TestConnection.GlobalTestDatabaseAlias))
+                using (ODatabase database = new ODatabase(TestConnection.GLOBAL_TEST_DATABASE_ALIAS))
                 {
                     short classId1 = database
                         .Create.Class("TestClass1")
